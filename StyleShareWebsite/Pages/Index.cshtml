@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-end">
+    @if (Model.UserName != null)
+    {
+        @if(Model.CurrentUser.Role == Models.Role.Admin)
+        {
+            <a asp-page="/AdminPanel/Index">Przejdź do panelu administracyjnego</a>
+        }
+        <div>User Name: @Model.UserName</div>
+        <a asp-page="/LogOut">Wyloguj</a>
+        <a asp-page="/UserProfil/Index">Twój profil</a>
+    }
+    else
+    {
+        <a asp-page="/Login">Zaloguj</a>
+        <a asp-page="/Register">Zarejestruj się</a>
+    }
+</div>
+
+
+<a asp-page="/Postables/Posts/Index">Posty</a>
+<a asp-page="/Postables/Styles/Index">Style</a>
+<a asp-page="/Postables/ColorSets/Index">Kolory</a>

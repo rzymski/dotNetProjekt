@@ -1,0 +1,30 @@
+﻿@page
+@model StyleShareWebsite.Pages.LoginModel
+@{
+    ViewData["Title"] = "Logowanie";
+    ViewData["PageName"] = "Logowanie";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.UserName">Nazwa użytkownika</label>
+        <input type="text" class="form-control" asp-for="@Model.UserName" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Password">Hasło</label>
+        <input type="password" class="form-control" asp-for="@Model.Password" />
+    </div>
+
+    <div class="form-check">
+        <label asp-for="@Model.RememberMe" class="form-check-label" />
+        <input type="checkbox" class="form-check" asp-for="@Model.RememberMe" />
+    </div>
+
+    <div>
+        <button type="submit">Zaloguj mnie</button>
+    </div>
+    <div style="text-align:right">
+        <a asp-page="/Register">Zarejestruj się</a>
+    </div>
+</form>

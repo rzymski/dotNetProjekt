@@ -1,0 +1,87 @@
+﻿@page
+@model StyleShareWebsite.Pages.Styles.DetailsModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Style</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Css)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Css)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Html)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Html)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Date)
+        </dd>
+        <br/><br/><br/><br/>
+        @if (Model.Tags != null && Model.Tags.Count != 0)
+        {
+            <dt class="col-sm-12" style="text-align:center">Tagi Postu:</dt>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <dt class="col-sm-6" style="text-align:center">
+                            Id tagu
+                        </dt>
+                        <dt class="col-sm-6" style="text-align:center">
+                            Nazwa tagu
+                        </dt>
+                    </tr>
+                @foreach (var item in Model.Tags)
+                {
+                                <tr>
+                                    <dd class="col-sm-6" style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Id)
+                                    </dd>
+                                    <dd class="col-sm-6" style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Name)
+                                    </dd>
+                                </tr>
+                }
+                </thead>
+            </table>
+        }
+        else
+        {
+            <div>Styl nie ma tagów</div>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Style?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

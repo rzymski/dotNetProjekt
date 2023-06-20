@@ -1,0 +1,59 @@
+﻿@page
+@model StyleShareWebsite.Pages.Postables.Styles.DetailsModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Style";
+}
+
+<h1>Style Details</h1>
+
+<div>
+    <h4>Style</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Css)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Css)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Html)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Html)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Style.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Style.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var tag in Model.Style.Tags)
+            {<p>@tag.Name</p>}
+        </dd>
+    </dl>
+</div>
+<div>
+    <div>
+        @if (Model.CurrentUser != null && Model.CurrentUser.Id == Model.Style.UserId)
+        {
+            <br/>
+            <br/>
+            <a asp-page="./Edit" asp-route-id="@Model.Style?.Id">Edit</a>
+            <span>|</span>
+            <a asp-page="./Delete" asp-route-id="@Model.Style?.Id">Delete</a>
+        }   
+    </div>
+    <a asp-page="./Index">Back to List</a>
+</div>

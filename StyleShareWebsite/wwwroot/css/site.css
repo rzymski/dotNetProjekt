@@ -1,0 +1,81 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#post-container{
+    background-color: lightgray;
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+#post-title {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+#post-content {
+    border: 0.5px #dcdcdc solid;
+    border-radius: 3px;
+    padding: 8px;
+    margin: 20px 0px;
+    word-break: break-all;
+}
+
+.tag {
+    background-color: orangered;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#likes-container {
+    margin-left: auto;
+    width: 100px;
+    padding: 3px;
+}
+
+#likes-container label {
+    text-align: center;
+}
+
+#active-like-button {
+    border-radius: 3px;
+    background-color: #fff;
+    text-decoration: none;
+    color: black;
+    border: 1px black solid;
+    padding: 4px 10px;
+}
+#active-like-button:hover {
+    background-color: orangered;
+}
+
+#inactive-like-button {
+    border-radius: 3px;
+    background-color: orangered;
+    text-decoration: none;
+    color: black;
+    border: 1px black solid;
+    padding: 4px 10px;
+    
+}

@@ -1,0 +1,48 @@
+﻿@page
+@model StyleShareWebsite.Pages.AdminPanel.StylePacks.IndexModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny";
+}
+
+<h1>Index</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StylePack[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StylePack[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StylePack) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a asp-page="./../Index">Wróć do głównego panelu</a>
+</div>

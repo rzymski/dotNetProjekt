@@ -1,0 +1,65 @@
+﻿@page
+@model StyleShareWebsite.Pages.AdminPanel.StyleStylePacks.IndexModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].StylePack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].StyleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].Style.Title) |
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].Style.Html) |
+                @Html.DisplayNameFor(model => model.StyleStylePack[0].Style.Css)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StyleStylePack) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StylePack.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StylePack.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleId)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Style.Title) |
+                    @Html.DisplayFor(modelItem => item.Style.Html) |
+                    @Html.DisplayFor(modelItem => item.Style.Css)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a asp-page="./../Index">Wróć do głównego panelu</a>
+</div>

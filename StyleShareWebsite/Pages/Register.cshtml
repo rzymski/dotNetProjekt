@@ -1,0 +1,34 @@
+﻿@page
+@model StyleShareWebsite.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Rejestracja";
+    ViewData["PageName"] = "Rejestracja";
+}
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="@Model.user.Nickname">Nazwa użytkownika</label>
+        <input type="text" class="form-control" asp-for="@Model.user.Nickname" />
+        <span asp-validation-for="@Model.user.Nickname" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.user.Email">Email</label>
+        <input type="email" class="form-control" asp-for="@Model.user.Email" />
+        <span asp-validation-for="@Model.user.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.user.Password">Hasło</label>
+        <input type="password" class="form-control" asp-for="@Model.user.Password" />
+        <span asp-validation-for="@Model.user.Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.confirmedPassword">Powtórz Hasło</label>
+        <input type="password" class="form-control" asp-for="@Model.confirmedPassword" />
+    </div>
+
+    <button type="submit">Zarejestruj się</button>
+    <a asp-page="/Login">Zaloguj</a>
+</form>
+

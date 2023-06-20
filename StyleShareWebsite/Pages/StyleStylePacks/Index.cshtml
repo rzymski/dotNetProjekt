@@ -1,0 +1,59 @@
+﻿@page
+@model StyleShareWebsite.Pages.StyleStylePacks.StyleStylePacks.IndexModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Paczki stylow";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StylePackWithStyles[0].StylePack.Name)
+            </th>
+            @*<th>
+                @foreach (var item2 in model.StylePackWithStyles[0])
+                {
+                }
+                @Html.DisplayNameFor(model => model.StylePackWithStyles[0].Style[0].Title) |
+                @Html.DisplayNameFor(model => model.StylePackWithStyles[0].Style[0].Html) |
+                @Html.DisplayNameFor(model => model.StylePackWithStyles[0].Style[0].Css)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StylePackWithStyles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StylePack.Name)
+            </td>
+                @foreach (var item2 in item.Styles)
+                {
+                    <td>
+                    @Html.DisplayFor(modelItem => item2.Title) |
+                    @Html.DisplayFor(modelItem => item2.Html) |
+                    @Html.DisplayFor(modelItem => item2.Css)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item2.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item2.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item2.Id">Delete</a>
+                    </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a asp-page="./../Index">Wróć do głównego panelu</a>
+</div>

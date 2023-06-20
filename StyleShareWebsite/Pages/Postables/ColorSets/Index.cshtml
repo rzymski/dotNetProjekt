@@ -1,0 +1,100 @@
+﻿@page
+@using StyleShareWebsite.Models
+@model StyleShareWebsite.Pages.Postables.ColorSets.ColorSetModel
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Kolory";
+}
+
+<div class="text-end">
+    @if (Model.UserName != null)
+    {
+        @if (Model.CurrentUser.Role == Role.Admin)
+        {
+                <a asp-page="/AdminPanel/Index">Przejdź do panelu administracyjnego</a>
+        }
+        <div>User Name: @Model.UserName</div>
+        <a asp-page="/LogOut">Wyloguj</a>
+        <a asp-page="/UserProfil/Index">Twój profil</a>
+    }
+    else
+    {
+        <a asp-page="/Login">Zaloguj</a>
+        <a asp-page="/Register">Zarejestruj się</a>
+    }
+</div>
+
+@if (Model.CurrentUser != null && Model.CurrentUser.Id != null)
+{
+     <p>
+        <a asp-page="./Create">Create New ColorSets</a>
+    </p>
+}
+
+<div>
+    @foreach(var colorset in Model.ColorSets)
+    {
+        <div id="post-container">
+            @{
+                var colorsetOwner = Model._postableService.GetOwnerByPostableIdAsync(colorset.Id).Result;
+            }
+
+            <h1 id="post-title">Tytuł: @colorset.Title</h1>
+            <label>Twórca: @colorsetOwner.Nickname</label>
+            <div style="text-align:right">
+                @{
+                    var tags = Model._postableService.GetAllTagsByPostableIdAsync(colorset.Id).Result;
+                    foreach (Tag tag in tags)
+                    {
+                                <label class="tag">@tag.Name</label>
+                    }
+
+                }
+            </div>
+            <div id="colorset-content"> 
+                Color: @colorset.Colors
+            </div>
+            <label>@colorset.Date</label>
+           
+            <div id="likes-container">
+                @{var likedUserList = Model._likeService.GetAllLikingUsersByPostableId(colorset.Id).Result;}
+                @if (Model.CurrentUser != null && Model.CurrentUser.Id != null)
+                {
+                    @if (Model._postableService.IsUserAlreadyLikedSpecificPostable(Model.CurrentUser.Id!, colorset.Id))
+                    {
+                        <a id="inactive-like-button">Like @likedUserList.Count</a>
+                    }
+                    else
+                    {
+                        <a asp-page="../../AddLike" asp-route-id="@colorset.Id" id="active-like-button">Like @likedUserList.Count</a>
+                    }
+                }
+                else
+                {  
+                    <a asp-page="../../AddLike" disabledd asp-route-id="@colorset.Id" id="active-like-button">@likedUserList.Count</a>
+                }
+            </div>
+
+            @if (Model.CurrentUser != null)
+            {
+                <a asp-page="../../AddComment" asp-route-id="@colorset.Id">Add Comment</a>
+            }
+            <a asp-page="../../Comments" asp-route-id="@colorset.Id">Comments</a>
+            @{
+                var commentUserList = Model._commentService.GetAllCommentsByCommentedPostableId(colorset.Id).Result;
+            }
+            <span>
+                - @commentUserList.Count 
+            </span>
+            <div>
+                @if (Model.CurrentUser != null && Model.CurrentUser.Id == colorset.UserId)
+                {
+                    <br/>
+                    <br/>
+                    <a asp-page="./Edit" asp-route-id="@colorset.Id">Edit</a>
+                    <span>|</span>
+                    <a asp-page="./Delete" asp-route-id="@colorset.Id">Delete</a>
+                }   
+            </div>
+        </div>
+    }
+</div>

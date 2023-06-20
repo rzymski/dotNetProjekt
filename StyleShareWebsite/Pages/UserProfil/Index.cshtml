@@ -1,0 +1,272 @@
+﻿@page
+@model StyleShareWebsite.Pages.UserProfil.IndexModel
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Profil uzytkownika";
+}
+
+<div class="container">
+    <h1>Profil użytkownika</h1>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CurrentUser.Nickname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CurrentUser.Nickname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CurrentUser.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CurrentUser.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CurrentUser.Password)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CurrentUser.Password)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit">Edytuj dane personalne</a>
+    </div>
+
+    <br/>
+    <br/>
+    <h1>Osiągnięcia</h1>
+    @if (Model.CurrentUserAchievements != null && Model.CurrentUserAchievements.Count != 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Tytul
+                    </th>
+                    <th>
+                        Opis
+                    </th>
+                </tr>
+                @foreach (var item in Model.CurrentUserAchievements)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </thead>
+        </table>
+    } 
+    else
+    {
+        <div>Brak osiągnięć</div>
+    }
+    <br/>
+    <br/>
+
+    <h1>Posty użytkownika</h1>
+    @if (Model.CurrentUserPosts != null && Model.CurrentUserPosts.Count != 0)
+    {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Data Postu
+                        </th>
+                        <th>
+                            Tytul Postu
+                        </th>
+                        <th>
+                            Zawartość Postu
+                        </th>
+                    </tr>
+                @foreach (var item in Model.CurrentUserPosts)
+                {
+                            <tr>
+                                <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                                </td>
+                            </tr>
+                }
+                </thead>
+            </table>
+    }
+    else
+    {
+            <div>Brak postów</div>
+    }
+    <br />
+    <br />
+    <h1>Style użytkownika</h1>
+    @if (Model.CurrentUserStyles != null && Model.CurrentUserStyles.Count != 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Data Stylu
+                    </th>
+                    <th>
+                        Tytul Stylu
+                    </th>
+                    <th>
+                        HTML Stylu
+                    </th>
+                    <th>
+                        CSS Stylu
+                    </th>
+                </tr>
+                @foreach (var item in Model.CurrentUserStyles)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Html)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Css)
+                    </td>
+                </tr>
+                }
+            </thead>
+        </table>
+    }
+    else
+    {
+        <div>Brak stylów</div>
+    }
+    <br />
+    <br />
+    <h1>Zestawy barw użytkownika</h1>
+    @if (Model.CurrentUserColorSets != null && Model.CurrentUserColorSets.Count != 0)
+    {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Data zestawu barw
+                        </th>
+                        <th>
+                            Tytul zestawu barw
+                        </th>
+                        <th>
+                            Zawartość zestawu barw
+                        </th>
+                    </tr>
+                @foreach (var item in Model.CurrentUserColorSets)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Colors)
+                        </td>
+                    </tr>
+                }
+                </thead>
+            </table>
+    }
+    else
+    {
+            <div>Brak zestawów barw</div>
+    }
+    <br />
+    <br />
+    <h1>Komentarze użytkownika</h1>
+    @if (Model.CurrentUserComments != null && Model.CurrentUserComments.Count != 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Data Komentarza
+                    </th>
+                    <th>
+                        Tytul Komentarza
+                    </th>
+                    <th>
+                        Zawartość Komentarza
+                    </th>
+                    <th>
+                        Komentowany post
+                    </th>
+                </tr>
+                @foreach (var item in Model.CurrentUserComments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            @foreach(var post in Model.AllPosts)
+                            {
+                                if (post.Id == @item.PostableId)
+                                {
+                                    <a asp-page="../DetailsPost" asp-route-id="@item.PostableId">Post</a>
+                                }
+                            }
+                            @foreach (var style in Model.AllStyles)
+                            {
+                                if (style.Id == @item.PostableId)
+                                {
+                                    <a asp-page="../Postables/Styles/Details" asp-route-id="@item.PostableId">Post</a>
+                                }
+                            }
+                            @foreach (var colorset in Model.AllColorSets)
+                            {
+                                if (colorset.Id == @item.PostableId)
+                                {
+                                    <a asp-page="../Postables/ColorSets/Details" asp-route-id="@item.PostableId">Post</a>
+                                }
+                            }
+                            @*<a asp-page="../DetailsPost" asp-route-id="@item.PostableId">Post</a>*@
+                        </td>
+                    </tr>
+                }
+            </thead>
+        </table>
+    }
+    else
+    {
+        <div>Brak Komentarzy</div>
+    }
+</div>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a asp-page="./../Index">Wróc do strony głównej</a>
+</div>

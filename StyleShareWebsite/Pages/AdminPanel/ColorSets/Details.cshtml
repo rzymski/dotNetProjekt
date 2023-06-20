@@ -1,0 +1,81 @@
+﻿@page
+@model StyleShareWebsite.Pages.AdminPanel.ColorSets.DetailsModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ColorSet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSet.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorSet.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSet.Colors)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorSet.Colors)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSet.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorSet.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSet.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorSet.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSet.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorSet.Date)
+        </dd>
+        <br/><br/><br/><br/>
+        @if (Model.Tags != null && Model.Tags.Count != 0)
+        {
+                <dt class="col-sm-12" style="text-align:center">ColorSet Tags:</dt>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <dt class="col-sm-6" style="text-align:center">
+                                Id tagu
+                            </dt>
+                            <dt class="col-sm-6" style="text-align:center">
+                                Nazwa tagu
+                            </dt>
+                        </tr>
+                    @foreach (var item in Model.Tags)
+                    {
+                                    <tr>
+                                        <dd class="col-sm-6" style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.Id)
+                                        </dd>
+                                        <dd class="col-sm-6" style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.Name)
+                                        </dd>
+                                    </tr>
+                    }
+                    </thead>
+                </table>
+        }
+        else
+        {
+                <div>ColorSet nie ma tagów</div>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ColorSet?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

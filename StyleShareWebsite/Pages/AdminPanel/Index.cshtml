@@ -1,0 +1,73 @@
+﻿@page
+@model StyleShareWebsite.Pages.AdminPanel.IndexModel
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny";
+}
+
+<div style="text-align:center">
+    <h1>Main admin Panel</h1>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<dl class="row">
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Achievements/Index">Achievements</a></h1>
+    </dt>
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./AchievementUsers/Index">AchievementUsers</a></h1>
+    </dt>
+</dl>
+<br />
+<br />
+<dl class="row">
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Users/Index">Users</a></h1>
+    </dt>
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Posts/Index">Posts</a></h1>
+    </dt>
+</dl>
+<br />
+<br />
+<dl class="row">
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Comments/Index">Comments</a></h1>
+    </dt>
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./ColorSets/Index">Color Sets</a></h1>
+    </dt>
+</dl>
+<br />
+<br />
+<dl class="row">
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Tags/Index">Tags</a></h1>
+    </dt>
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Likes/Index">Likes</a></h1>
+    </dt>
+</dl>
+<br />
+<br />
+<dl class="row">
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./Styles/Index">Styles</a></h1>
+    </dt>
+    <dt class="col-sm-6" style="text-align:center">
+        <h1><a asp-page="./StylePacks/Index">Style Packs</a></h1>
+    </dt>
+</dl>
+<dl class="row">
+    <dt class="col-sm-12" style="text-align:center">
+        <h1><a asp-page="./StyleStylePacks/Index">Styles in StylePacks</a></h1>
+    </dt>
+</dl>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a asp-page="./../Index">Wróć do strony głównej</a>
+</div>

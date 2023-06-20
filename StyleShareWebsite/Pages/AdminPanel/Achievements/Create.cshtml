@@ -1,0 +1,39 @@
+﻿@page
+@model StyleShareWebsite.Pages.Achievements.CreateModel
+
+@{
+    ViewData["PageName"] = ViewData["Title"] = "Panel administracyjny: Osiagniecia";
+}
+
+<h1>Create</h1>
+
+<h4>Achievement</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Achievement.Title" class="control-label"></label>
+                <input asp-for="Achievement.Title" class="form-control" />
+                <span asp-validation-for="Achievement.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achievement.Description" class="control-label"></label>
+                <input asp-for="Achievement.Description" class="form-control" />
+                <span asp-validation-for="Achievement.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
